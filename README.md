@@ -20,6 +20,7 @@ Script to create a cluster in dataproc, submit a job and delete cluster
 2.- Upload main.py file to the bucket.  
 
 **Cloud Function Code**  
+```
 import argparse
 import os
 import re
@@ -137,3 +138,4 @@ def start_heavy_load(context):
             "---------------INFO: AN ERROR HAPPENED, PLEASE CHECK LOGS TO HAVE MORE INFORMATION---------------------"
         )
 
+```
