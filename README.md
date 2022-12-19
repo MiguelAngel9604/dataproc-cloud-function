@@ -1,7 +1,7 @@
 # dataproc-cloud-function
 Script to create a cluster in dataproc, submit a job and delete cluster  
 
-**Cloud Function:  **
+**Cloud Function:**  
 1.- Create cloud function:  
   ![image](https://user-images.githubusercontent.com/63972784/208485173-cf096e17-2074-4a48-8e2f-e1d790801500.png)  
   
