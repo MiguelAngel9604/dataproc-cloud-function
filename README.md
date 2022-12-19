@@ -27,7 +27,7 @@ from logging import exception
 from google.cloud import dataproc_v1
 from google.cloud import storage
 
-# region Variables
+
 pyspark_file = "gs://"
 waiting_callback = False
 project_id = ""
@@ -40,9 +40,6 @@ cluster_client = dataproc_v1.ClusterControllerClient(
     client_options={"api_endpoint": "{}-dataproc.googleapis.com:443".format(region)}
 )
 
-# endregion
-
-# region CREATE CLUSTER
 def quickstart(project_id, region, cluster_name, pyspark_file):
     # Create the cluster config.
     print("---------------INFO: CREATING CLUSTER---------------------")
@@ -69,10 +66,6 @@ def quickstart(project_id, region, cluster_name, pyspark_file):
     )
     # [END dataproc_create_cluster]
 
-
-# endregion
-
-# region [START dataproc_submit_job]
 def submit_job(project_id, region, cluster_name, pyspark_file):
 
     # Create the job client.
@@ -114,10 +107,6 @@ def submit_job(project_id, region, cluster_name, pyspark_file):
 
     # [END dataproc_submit_job]
 
-
-# endregion#
-
-# region # [START dataproc_delete_cluster]
 def delete_cluster(project_id, region, cluster_name):
 
     # Delete the cluster once the job has terminated.
@@ -136,10 +125,6 @@ def delete_cluster(project_id, region, cluster_name):
         "---------------INFO: CLUSTER{} SUCCESSFULLY DELETED.".format(cluster_name)
         + " ---------------------"
     )
-
-
-# [END dataproc_delete_cluster]
-# endregion
 
 
 def start_heavy_load(context):
