@@ -2,7 +2,7 @@
 Script to create a cluster in dataproc, submit a job and delete cluster  
 Steps to create and execute Cloud Function:  
 1.- Create cloud function:  
-  ![image](https://user-images.githubusercontent.com/63972784/208483444-f1561d3c-9998-4177-9911-78ea8e0ddd2a.png)
+  ![image](https://user-images.githubusercontent.com/63972784/208485173-cf096e17-2074-4a48-8e2f-e1d790801500.png)
   Set the "Timeout" to 540s, this due to the time gcp takes to create the cluster, depending on your script will also increase or decrease the time of execution and finally the time it takes to delete the cluster:  
   ![image](https://user-images.githubusercontent.com/63972784/208483961-4841fc6b-32ae-4d26-9a52-e33b021d6415.png)
   Choose Python 3.7 as Runtime, paste main.py code and make sure start_heavy_load is set as Entry Point:  
