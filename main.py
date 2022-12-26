@@ -49,27 +49,27 @@ def process_df(df_raw, file):
         file (string): name of the CSV file
     """
     # region Rename columns that have spaces
-    if file == "file_1.csv":
-        df_renamed = df_raw.withColumnRenamed(
-            "Broadcast Month", "Broadcast_Month"
-        ).withColumnRenamed("Media Type", "Media_Type")
+    newColumns = []
+    for field in df_raw.schema.fields:
+        new_col = field.name.replace(" ", "_")
+        if new_col[0].isdigit() is True:
+            new_col = "F_" + new_col
+        newColumns.append(new_col)
 
-    elif file == "file_2.csv":
-        df_renamed = df_raw.withColumnRenamed(
-            "Broadcast Month", "Broadcast_Month"
-        ).withColumnRenamed("Campaign Start Date", "Campaign_Start_Date")
+    oldColumns = df_raw.schema.names
 
-    elif file == "file_3.csv":
-        df_renamed = df_raw.withColumnRenamed(
-            "Campaign ID", "Campaign_ID"
-        ).withColumnRenamed("Line Item ID", "Line_Item_ID")
+    df_renamed = reduce(
+        lambda data, idx: data.withColumnRenamed(oldColumns[idx], newColumns[idx]),
+        range(len(oldColumns)),
+        df_raw,
+    )
 
     print(
         "-----------------INFO: NEW COLUMN'S NAMES - DATA FRAME - "
         + file
         + " ---------------------------"
     )
-    df_renamed.show(10, truncate=True)
+    df_renamed.printSchema()
     filter_date(df_renamed, file)
 
     # endregion
